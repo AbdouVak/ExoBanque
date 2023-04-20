@@ -52,7 +52,8 @@ class Titulaire{
             $nbCompte = $nbCompte ." - ". $compte->getLibelle() ;
         };
 
-        return "Nom: $this->_nom <br>
+        return "<br> <h2> Information du titulaires </h2> 
+                Nom: $this->_nom <br>
                 Prénom: $this->_prenom <br>
                 Date de naissance: $this->_dateNaissance <br>
                 Âge: ".$this->calculeAge()." ans <br>

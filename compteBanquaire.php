@@ -56,7 +56,8 @@ class compteBanque{
     /*Utilisation de fonction toString pour afficher les information du compte banquaire*/ 
     public function __toString()
     {
-        return "Libellé: $this->_libelle <br>
+        return "<br><h2> Information du compte banquaire</h2> 
+                Libellé: $this->_libelle <br>
                 Solde: $this->_soldeInitial <br>
                 Devise: $this->_deviseMonetaire <br>
                 Titulaire: $this->_titulaire <br>";
