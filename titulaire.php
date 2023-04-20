@@ -12,7 +12,8 @@ class Titulaire{
         $this->_prenom = $prenom ;
         $this->_dateNaissance = $dateNaissance ;
         $this->_ville = $ville ;
-        $this->_compteBanquaire = []; 
+        $this->_compteBanquaire = [];
+   
     }
 
     public function getNom() : string{return $this->_nom;}
@@ -31,11 +32,16 @@ class Titulaire{
 
     public function __toString()
     {
+        $nbCompte = "";
+        foreach($this->_compteBanquaire as $compte){
+            $nbCompte = $nbCompte ." - ". $compte->getLibelle() ;
+        };
+
         return "Nom: $this->_nom <br>
                 Prénom: $this->_prenom <br>
                 Date de naissance: $this->_dateNaissance <br>
                 Ville: $this->_ville <br>
-                CompteBanquaire: $this->_compteBanquaire <br>";
+                Compte Banquaire:  $nbCompte<br>";
 
     }
 
