@@ -30,20 +30,21 @@ class compteBanque{
 
     public function crediter($sommeAjouter){
         $this->_soldeInitial = $this->_soldeInitial + $sommeAjouter;
-        echo "Vous avez crédité votre compte  $this->_libelle de  $sommeAjouter $this->_deviseMonetaire<br>";
+        return "Vous avez crédité votre compte  $this->_libelle de  $sommeAjouter $this->_deviseMonetaire<br>";
     }
 
     public function debiter($sommeRetirer){
         $this->_soldeInitial = $this->_soldeInitial + $sommeRetirer;
-        echo "Vous avez debité votre compte  $this->_libelle de  $sommeRetirer $this->_deviseMonetaire<br>";
+        return "Vous avez debité votre compte  $this->_libelle de  $sommeRetirer $this->_deviseMonetaire<br>";
 
     }
 
     public function virement($compteDestinataire,$sommeVirer){
         foreach($this->_titulaire->getCompteBanquaire() as $compte){
             if($compte == $compteDestinataire){
-                $compte->crediter($sommeVirer);
                 $this->debiter($sommeVirer);
+                $compte->crediter($sommeVirer);
+                return "Vous avez fait un virement de $sommeVirer $this->_deviseMonetaire de votre compte  $this->_libelle a votre compte $compte->_libelle ";
             }
         }
     }
