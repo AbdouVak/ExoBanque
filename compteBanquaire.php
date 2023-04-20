@@ -15,6 +15,7 @@ class compteBanque{
 
     }
 
+    /*Création des methode getter et setter*/ 
     public function getLibelle(): string{return $this->_libelle;}
     public function setLibelle(string $libelle){$this->_libelle = $libelle;}
 
@@ -28,17 +29,20 @@ class compteBanque{
     public function setTitulaire(string $titulaire){$this->_titulaire = $titulaire;}
 
 
+    /*Création de la methode pour créditer un compte*/ 
     public function crediter($sommeAjouter){
         $this->_soldeInitial = $this->_soldeInitial + $sommeAjouter;
         return "Vous avez crédité votre compte  $this->_libelle de  $sommeAjouter $this->_deviseMonetaire<br>";
     }
 
+    /*Création de la methode pour débiter un compte*/ 
     public function debiter($sommeRetirer){
         $this->_soldeInitial = $this->_soldeInitial + $sommeRetirer;
         return "Vous avez debité votre compte  $this->_libelle de  $sommeRetirer $this->_deviseMonetaire<br>";
 
     }
 
+    /*Création de la methode pour faire un virement d'un compte titulaire a un autres*/ 
     public function virement($compteDestinataire,$sommeVirer){
         foreach($this->_titulaire->getCompteBanquaire() as $compte){
             if($compte == $compteDestinataire){
@@ -49,6 +53,7 @@ class compteBanque{
         }
     }
 
+    /*Utilisation de fonction toString pour afficher les information du compte banquaire*/ 
     public function __toString()
     {
         return "Libellé: $this->_libelle <br>

@@ -2,7 +2,7 @@
 class Titulaire{
     private string $_nom;
     private string $_prenom;
-    private string $_dateNaissance;
+    private $_dateNaissance;
     private string $_ville;
     private $_compteBanquaire;
 
@@ -16,6 +16,7 @@ class Titulaire{
    
     }
 
+    /*Création des methode getter et setter*/ 
     public function getNom() : string{return $this->_nom;}
     public function setNom(string $Nom){$this->_nom = $Nom;}
 
@@ -27,9 +28,23 @@ class Titulaire{
 
     public function getVille() : string{return $this->_ville;}
     public function setVille(string $ville){$this->_ville = $ville;}
-
+    
     public function getCompteBanquaire() {return $this->_compteBanquaire;}
 
+    /*Calcule l'age de la personne*/ 
+    public function calculeAge(){
+        $this->_dateNaissance =new DateTime($this->_dateNaissance);
+        $now = new DateTime('now');
+        $difference = $this->_dateNaissance->diff($now);
+        return  $age = $difference->format('%y');
+    }
+
+    /*Création de la methode qui ajoute des compte banquaire aux titulaires*/ 
+    public function addCompte($compteBanquaire){
+        $this->_compteBanquaire[] = $compteBanquaire;
+    }
+    
+    /*Utilisation de fonction toString pour afficher les information du titulaire*/ 
     public function __toString()
     {
         $nbCompte = "";
@@ -40,15 +55,10 @@ class Titulaire{
         return "Nom: $this->_nom <br>
                 Prénom: $this->_prenom <br>
                 Date de naissance: $this->_dateNaissance <br>
+                Âge: ".$this->calculeAge()." ans <br>
                 Ville: $this->_ville <br>
                 Compte Banquaire:  $nbCompte<br>";
-
     }
-
-    public function addCompte($compteBanquaire){
-        $this->_compteBanquaire[] = $compteBanquaire;
-    }
-
 }
 
 ?>
